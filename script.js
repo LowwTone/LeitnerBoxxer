@@ -1,3 +1,15 @@
+
+//slider updates and slider value display:
+var slider = document.getElementById("rangeSlider");
+var valueDisplay = document.getElementById("sliderValueDisplay");
+
+slider.oninput = function() {
+  valueDisplay.innerHTML = this.value;
+  console.log("slide");
+} 
+
+
+
 function DrawLines(context, amountOfLines, lineHeight=50) {
     for (let i = 0; i < amountOfLines; i++) {
         context.moveTo(0, 50 + i * lineHeight);
