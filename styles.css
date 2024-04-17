@@ -37,6 +37,14 @@ h1 {
 	font-family: sans-serif;
 }
 
+.slidecontainer {
+	text-align: center;
+}
+
 #sliderValueDisplay {
 	color: green;
+}
+
+canvas {
+	margin: 0 auto;
 }
