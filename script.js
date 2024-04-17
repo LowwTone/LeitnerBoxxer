@@ -45,23 +45,29 @@ function DrawLines(context, amountOfLines, lineHeight=50) {
 
 function DrawNumbers(data, days) {
 	
+	//calculate numer of days to exclude from full schedule
 	var numExclusions = data.length - days;
 	var exclusions = exclusionList.slice(0,numExclusions); 
-	console.log(exclusions);
+
 	
-    for (let i=0; i<data.length; i++) {
-		
-		//skip excluded elements
+	//generate array without the excluded elements
+	var remainingElements = [];
+	for (let i=0; i<data.length; i++) {
 		if (exclusions.includes(i))
 			continue;
-		
+		remainingElements.push(data[i]);
+	}
+	
+	//plot the values to the canvas
+    for (let i=0; i<remainingElements.length; i++) {
+
 
         let x_position = 10 + i * 30; //offset position by index
 		
 		ctx.lineWidth = 3;
 		ctx.strokeStyle = 'black';
     
-        for(const number of data[i]) {
+        for(const number of remainingElements[i]) {
             switch (number) {
                 case 1:					
                     ctx.fillStyle = 'red';
