@@ -1,11 +1,36 @@
+//testdata, replace with generated algorithmic data later:
+var boxNumbers = [[1,2],[1,3],[1,2],[1,4],[1,2],[1,3],[1,2],[1],[1,2],[1,3],[1,2],[1,5],[1,2,4],[1,3],[1,2],[1]];
+
+//first stab at "algorithm". Remove elements in this order to compact leitnerbox to smaller day amounts
+var exclusionList = [7,8,11,12,3,4,1,14,9,6,13,2]
+
+var days = 16;
+
+//get reference to canvas context
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.strokeStyle = 'black';
+
+//lines:
+DrawLines(ctx, 8);
+
+//default draw: full LeitnerBox:
+DrawNumbers(boxNumbers, days);
+
 
 //slider updates and slider value display:
 var slider = document.getElementById("rangeSlider");
 var valueDisplay = document.getElementById("sliderValueDisplay");
 
 slider.oninput = function() {
-  valueDisplay.innerHTML = this.value;
-  console.log("slide");
+	days = this.value
+	valueDisplay.innerHTML = days;
+
+	//refresh canvas:
+	ctx.clearRect(0, 0, c.width, c.height);
+	DrawLines(ctx, 8);
+	DrawNumbers(boxNumbers, days);
 } 
 
 
@@ -18,15 +43,25 @@ function DrawLines(context, amountOfLines, lineHeight=50) {
     }
 }
 
-function DrawNumbers(data) {
-    for (let i=0; i<boxNumbers.length; i++) {
+function DrawNumbers(data, days) {
+	
+	var numExclusions = data.length - days;
+	var exclusions = exclusionList.slice(0,numExclusions); 
+	console.log(exclusions);
+	
+    for (let i=0; i<data.length; i++) {
+		
+		//skip excluded elements
+		if (exclusions.includes(i))
+			continue;
+		
 
         let x_position = 10 + i * 30; //offset position by index
 		
 		ctx.lineWidth = 3;
 		ctx.strokeStyle = 'black';
     
-        for(const number of boxNumbers[i]) {
+        for(const number of data[i]) {
             switch (number) {
                 case 1:					
                     ctx.fillStyle = 'red';
@@ -59,19 +94,12 @@ function DrawNumbers(data) {
     }
 }
   
-//get reference to canvas context
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.font = "30px Arial";
 
-//lines:
-DrawLines(ctx, 8);
 
-//testdata, replace with generated algorithmic data later:
-var boxNumbers = [[1,2],[1,3],[1,2],[1,4],[1,2],[1,3],[1,2],[1],[1,2],[1,3],[1,2],[1,5],[1,2,4],[1,3],[1,2],[1]];
 
-//numbers:
-DrawNumbers(boxNumbers);
+
+
+
 
 
 
