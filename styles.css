@@ -27,3 +27,15 @@
   background: #00f;
   cursor: pointer;
 }
+
+html {
+	font-size: 20pt;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+#sliderValueDisplay {
+	color: green;
+}
