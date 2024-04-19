@@ -93,9 +93,9 @@ function DrawNumbersAlgo2(days) {
 	//add fours
 	if (days >= 4) {
 		
-		//if (days < 7) 
-		//	elements[3].push(3);
-		//else 
+		if (days < 7) 
+			elements[4].push(3);
+		else 
 			for (let i=4; i<days; i=i+8) {
 				elements[i].push(4);
 			}		
@@ -104,14 +104,36 @@ function DrawNumbersAlgo2(days) {
 	//add fives
 	if (days >= 8) {
 		
-		//if (days < 13)
-		//	elements[7].push(4)
-		//else 
+		if (days < 13)
+			elements[7].push(4)
+		else 
 			for (let i=8; i<days; i=i+16) {
 				elements[i].push(5);
 			}		
 	}	
 	
+	//add sixes
+	if (days >= 16) {
+		
+		if (days < 25)
+			elements[15].push(5)
+		else 
+			for (let i=16; i<days; i=i+32) {
+				elements[i].push(6);
+			}		
+	}	
+
+	//add sevens
+	if (days >= 32) {
+		
+		if (days < 49)
+			elements[31].push(6)
+		else 
+			for (let i=32; i<days; i=i+64) {
+				elements[i].push(7);
+			}		
+	}		
+
 	PlotData(elements);
 	
 	
@@ -157,7 +179,16 @@ function PlotData(data) {
                     ctx.strokeText("5", x_position ,190); //fix coordinates
                     ctx.fillText("5", x_position ,190); //fix coordinates
                     break;
-                //FIXME: add more cases
+                case 6:
+                    ctx.fillStyle = 'purple';
+                    ctx.strokeText("6", x_position ,140); //fix coordinates
+                    ctx.fillText("6", x_position ,140); //fix coordinates
+                    break;
+                case 7:
+                    ctx.fillStyle = 'pink';
+                    ctx.strokeText("7", x_position ,90); //fix coordinates
+                    ctx.fillText("7", x_position ,90); //fix coordinates
+                    break;
             }
         }
     }
