@@ -24,8 +24,11 @@ slider.oninput = function() {
 	days = this.value
 	valueDisplay.innerHTML = days;
 
-	//refresh canvas:
+	//refresh canvas:	
 	ctx.clearRect(0, 0, c.width, c.height);
+
+	
+
 	DrawLinesHorizontal(ctx, 8);
 	DrawLinesVertical(ctx);
 	
@@ -219,7 +222,35 @@ function PlotData(data) {
     }
 }
   
+document.getElementById('download').addEventListener('click', function(e) {
 
+	//convert canvas to image and download
+
+	//regenerate image with white background
+	//then export it. Then regenerate the canvas with the original background color
+	
+	//generate canvas with white background
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, c.width, c.height);
+	DrawLinesHorizontal(ctx, 8);
+	DrawLinesVertical(ctx);
+	DrawNumbersAlgo2(days);
+
+	//convert canvas to image and simulate download click
+	let canvasUrl = c.toDataURL("image/jpeg", 0.6);
+	console.log(canvasUrl);
+	const createEl = document.createElement('a');
+	createEl.href = canvasUrl;
+	createEl.download = "Leitnerboxxer-export.jpg";
+	createEl.click();
+	createEl.remove();
+
+	//regenerate the original canvas
+	ctx.clearRect(0, 0, c.width, c.height);
+	DrawLinesHorizontal(ctx, 8);
+	DrawLinesVertical(ctx);
+	DrawNumbersAlgo2(days);
+  });
 
 
 
