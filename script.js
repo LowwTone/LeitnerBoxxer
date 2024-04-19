@@ -1,16 +1,15 @@
-
-
 var days = 65;
 
 //get reference to canvas context
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+
 ctx.font = "25px Arial";
 ctx.strokeStyle = 'black';
 
 //lines:
-DrawLines(ctx, 8);
-DrawLines(ctx, 8);
+DrawLinesHorizontal(ctx, 8);
+DrawLinesVertical(ctx);
 
 //default draw: full LeitnerBox:
 //DrawNumbersAlgo1(days);
@@ -27,7 +26,9 @@ slider.oninput = function() {
 
 	//refresh canvas:
 	ctx.clearRect(0, 0, c.width, c.height);
-	DrawLines(ctx, 8);
+	DrawLinesHorizontal(ctx, 8);
+	DrawLinesVertical(ctx);
+	
 	//DrawNumbersAlgo1(days);
 	DrawNumbersAlgo2(days);
 } 
@@ -124,20 +125,32 @@ function DrawNumbersAlgo2(days) {
 	}		
 
 	PlotData(elements);
-	
-	
-	console.log(elements);
-	
 }
 
-function DrawLines(context, amountOfLines, lineHeight=40, offset=10) {
+function DrawLinesHorizontal(context, amountOfLines, lineHeight=40, offset=10) {
 	context.lineWidth = 2;
+	ctx.strokeStyle = '#aaa'
     for (let i = 0; i < amountOfLines; i++) {
-        context.moveTo(0, offset + i * lineHeight);
-        context.lineTo(1600, offset + i * lineHeight);
+		ctx.beginPath();
+        context.moveTo(5, offset + i * lineHeight);
+        context.lineTo(1565, offset + i * lineHeight);
         context.stroke();
     }
+	ctx.beginPath();
 }
+
+function DrawLinesVertical(context, offset=5) {
+	context.lineWidth = 1;
+	ctx.strokeStyle = '#aaa';
+	for (let i = 0; i < 65 + 1; i++) {
+		ctx.beginPath();
+		context.moveTo(offset + i * 24, 10);
+		context.lineTo(offset + i * 24, 400);
+		context.stroke();
+	}
+	ctx.beginPath();
+}
+
 
 function PlotData(data) {
 	//plot the values to the canvas
@@ -151,8 +164,10 @@ function PlotData(data) {
 		ctx.lineWidth = 3;
 		ctx.strokeStyle = 'black';
     
+		ctx.beginPath();
         for(const number of data[i]) {
 			ctx.font = "25px Arial";
+			
             switch (number) {
                 case 1:					
                     ctx.fillStyle = 'red';
@@ -190,9 +205,16 @@ function PlotData(data) {
                     ctx.fillText("7", x_position ,1 * line_height); 
                     break;
             }
+
+			//draw the day number
 			ctx.font = "15px Arial";
 			ctx.fillStyle = 'black';
-			ctx.fillText((i+1).toString(), x_position ,8 * line_height); 
+			if (i < 9) //adjust position for single digit numbers
+				ctx.fillText((i+1).toString(), x_position + 3 ,8 * line_height); 
+			else
+				ctx.fillText((i+1).toString(), x_position - 1 ,8 * line_height); 
+
+			ctx.beginPath();	
         }
     }
 }
