@@ -152,43 +152,47 @@ function PlotData(data) {
 		ctx.strokeStyle = 'black';
     
         for(const number of data[i]) {
+			ctx.font = "25px Arial";
             switch (number) {
                 case 1:					
                     ctx.fillStyle = 'red';
-					ctx.strokeText("1", x_position, 7 * line_height); //fix coordinates
-                    ctx.fillText("1", x_position, 7 * line_height); //fix coordinates
+					ctx.strokeText("1", x_position, 7 * line_height); 
+                    ctx.fillText("1", x_position, 7 * line_height); 
                     break;
                 case 2:
                     ctx.fillStyle = 'orange';
-                    ctx.strokeText("2", x_position, 6 * line_height); //fix coordinates
-                    ctx.fillText("2", x_position, 6 * line_height); //fix coordinates
+                    ctx.strokeText("2", x_position, 6 * line_height); 
+                    ctx.fillText("2", x_position, 6 * line_height); 
                     break;
                 case 3:
                     ctx.fillStyle = 'yellow';
-                    ctx.strokeText("3", x_position, 5 * line_height); //fix coordinates
-                    ctx.fillText("3", x_position, 5 * line_height); //fix coordinates
+                    ctx.strokeText("3", x_position, 5 * line_height); 
+                    ctx.fillText("3", x_position, 5 * line_height); 
                     break;
                 case 4:
                     ctx.fillStyle = 'green';
-                    ctx.strokeText("4", x_position, 4 * line_height); //fix coordinates
-                    ctx.fillText("4", x_position, 4 * line_height); //fix coordinates
+                    ctx.strokeText("4", x_position, 4 * line_height); 
+                    ctx.fillText("4", x_position, 4 * line_height); 
                     break;
                 case 5:
                     ctx.fillStyle = 'blue';
-                    ctx.strokeText("5", x_position ,3 * line_height); //fix coordinates
-                    ctx.fillText("5", x_position ,3 * line_height); //fix coordinates
+                    ctx.strokeText("5", x_position ,3 * line_height); 
+                    ctx.fillText("5", x_position ,3 * line_height); 
                     break;
                 case 6:
                     ctx.fillStyle = 'purple';
-                    ctx.strokeText("6", x_position ,2 * line_height); //fix coordinates
-                    ctx.fillText("6", x_position ,2 * line_height); //fix coordinates
+                    ctx.strokeText("6", x_position ,2 * line_height); 
+                    ctx.fillText("6", x_position ,2 * line_height); 
                     break;
                 case 7:
                     ctx.fillStyle = 'pink';
-                    ctx.strokeText("7", x_position ,1 * line_height); //fix coordinates
-                    ctx.fillText("7", x_position ,1 * line_height); //fix coordinates
+                    ctx.strokeText("7", x_position ,1 * line_height); 
+                    ctx.fillText("7", x_position ,1 * line_height); 
                     break;
             }
+			ctx.font = "15px Arial";
+			ctx.fillStyle = 'black';
+			ctx.fillText((i+1).toString(), x_position ,8 * line_height); 
         }
     }
 }

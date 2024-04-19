@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>LeitnerBoxxer - custom Leitnerboxes</title>
-<link rel="stylesheet" href="styles.css">
+  <title>LeitnerBoxxer - custom Leitnerboxes</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<h1>Wt's Custom LeitnerBox schedule generator</h1>
+<h1><span class="titleaccent">Leitnerboxxer</span> - custom Leiternbox schedule generator</h1>
 
-<canvas id="myCanvas" width="1600" height="340" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML canvas tag.</canvas>
+<div id=canvas-container">
+  <canvas id="myCanvas" width="1600" height="340" style="border:1px solid #d3d3d3;">
+  Your browser does not support the HTML canvas tag.</canvas>
+</div>
 
-<div class="slidecontainer">
-  <button id="download">Download Schedule as jpg image</button>
+<div class="slidecontainer"> 
   <input type="range" min="5" max="65" value="65" class="slider" id="rangeSlider">
   <p>Days: <span id="sliderValueDisplay">16</span></p>
+  <button id="download">Download Schedule as jpg image</button>
 </div>
 
 <script src=script.js></script>
+
 </body>
 </html>
