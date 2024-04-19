@@ -230,11 +230,17 @@ document.getElementById('download').addEventListener('click', function(e) {
 	//then export it. Then regenerate the canvas with the original background color
 	
 	//generate canvas with white background
+	//adjust canvas size to relevant size for plotted data
+	var original_canvas_width = c.width;
+	c.width = 10 + days * 24;
+
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, c.width, c.height);
 	DrawLinesHorizontal(ctx, 8);
 	DrawLinesVertical(ctx);
-	DrawNumbersAlgo2(days);
+	DrawNumbersAlgo2(days);	
+	ctx.fillStyle = "white";
+	ctx.fillRect(6 + days * 24, 0, 6 + days * 24, c.height); //overdraw white margin on the right side
 
 	//convert canvas to image and simulate download click
 	let canvasUrl = c.toDataURL("image/jpeg", 0.6);
@@ -246,6 +252,7 @@ document.getElementById('download').addEventListener('click', function(e) {
 	createEl.remove();
 
 	//regenerate the original canvas
+	c.width = original_canvas_width;
 	ctx.clearRect(0, 0, c.width, c.height);
 	DrawLinesHorizontal(ctx, 8);
 	DrawLinesVertical(ctx);
