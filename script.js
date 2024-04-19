@@ -1,6 +1,6 @@
 
 
-var days = 16;
+var days = 65;
 
 //get reference to canvas context
 var c = document.getElementById("myCanvas");
@@ -32,15 +32,6 @@ slider.oninput = function() {
 	DrawNumbersAlgo2(days);
 } 
 
-
-
-function DrawLines(context, amountOfLines, lineHeight=50) {
-    for (let i = 0; i < amountOfLines; i++) {
-        context.moveTo(0, 50 + i * lineHeight);
-        context.lineTo(1600, 50 + i * lineHeight);
-        context.stroke();
-    }
-}
 
 function DrawNumbersAlgo1(days) {
 	
@@ -139,12 +130,22 @@ function DrawNumbersAlgo2(days) {
 	
 }
 
+function DrawLines(context, amountOfLines, lineHeight=40, offset=10) {
+	context.lineWidth = 2;
+    for (let i = 0; i < amountOfLines; i++) {
+        context.moveTo(0, offset + i * lineHeight);
+        context.lineTo(1600, offset + i * lineHeight);
+        context.stroke();
+    }
+}
 
 function PlotData(data) {
 	//plot the values to the canvas
     for (let i=0; i<data.length; i++) {
 
-
+		const canvas_height = 420; //fix this: retrieve from actual canvas
+		const y_offset = 10;
+		const line_height = 40;
         let x_position = 10 + i * 24; //offset position by index
 		
 		ctx.lineWidth = 3;
@@ -154,38 +155,38 @@ function PlotData(data) {
             switch (number) {
                 case 1:					
                     ctx.fillStyle = 'red';
-					ctx.strokeText("1", x_position, 390); //fix coordinates
-                    ctx.fillText("1", x_position, 390); //fix coordinates
+					ctx.strokeText("1", x_position, 7 * line_height); //fix coordinates
+                    ctx.fillText("1", x_position, 7 * line_height); //fix coordinates
                     break;
                 case 2:
                     ctx.fillStyle = 'orange';
-                    ctx.strokeText("2", x_position, 340); //fix coordinates
-                    ctx.fillText("2", x_position, 340); //fix coordinates
+                    ctx.strokeText("2", x_position, 6 * line_height); //fix coordinates
+                    ctx.fillText("2", x_position, 6 * line_height); //fix coordinates
                     break;
                 case 3:
                     ctx.fillStyle = 'yellow';
-                    ctx.strokeText("3", x_position, 290); //fix coordinates
-                    ctx.fillText("3", x_position, 290); //fix coordinates
+                    ctx.strokeText("3", x_position, 5 * line_height); //fix coordinates
+                    ctx.fillText("3", x_position, 5 * line_height); //fix coordinates
                     break;
                 case 4:
                     ctx.fillStyle = 'green';
-                    ctx.strokeText("4", x_position, 240); //fix coordinates
-                    ctx.fillText("4", x_position, 240); //fix coordinates
+                    ctx.strokeText("4", x_position, 4 * line_height); //fix coordinates
+                    ctx.fillText("4", x_position, 4 * line_height); //fix coordinates
                     break;
                 case 5:
                     ctx.fillStyle = 'blue';
-                    ctx.strokeText("5", x_position ,190); //fix coordinates
-                    ctx.fillText("5", x_position ,190); //fix coordinates
+                    ctx.strokeText("5", x_position ,3 * line_height); //fix coordinates
+                    ctx.fillText("5", x_position ,3 * line_height); //fix coordinates
                     break;
                 case 6:
                     ctx.fillStyle = 'purple';
-                    ctx.strokeText("6", x_position ,140); //fix coordinates
-                    ctx.fillText("6", x_position ,140); //fix coordinates
+                    ctx.strokeText("6", x_position ,2 * line_height); //fix coordinates
+                    ctx.fillText("6", x_position ,2 * line_height); //fix coordinates
                     break;
                 case 7:
                     ctx.fillStyle = 'pink';
-                    ctx.strokeText("7", x_position ,90); //fix coordinates
-                    ctx.fillText("7", x_position ,90); //fix coordinates
+                    ctx.strokeText("7", x_position ,1 * line_height); //fix coordinates
+                    ctx.fillText("7", x_position ,1 * line_height); //fix coordinates
                     break;
             }
         }

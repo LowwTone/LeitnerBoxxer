@@ -7,11 +7,12 @@
 <body>
 <h1>Wt's Custom LeitnerBox schedule generator</h1>
 
-<canvas id="myCanvas" width="1600" height="500" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="1600" height="340" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML canvas tag.</canvas>
 
 <div class="slidecontainer">
-  <input type="range" min="5" max="65" value="16" class="slider" id="rangeSlider">
+  <button id="download">Download Schedule as jpg image</button>
+  <input type="range" min="5" max="65" value="65" class="slider" id="rangeSlider">
   <p>Days: <span id="sliderValueDisplay">16</span></p>
 </div>
 
