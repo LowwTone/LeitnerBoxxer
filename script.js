@@ -243,7 +243,7 @@ document.getElementById('download').addEventListener('click', function(e) {
 	ctx.fillRect(6 + days * 24, 0, 6 + days * 24, c.height); //overdraw white margin on the right side
 
 	//convert canvas to image and simulate download click
-	let canvasUrl = c.toDataURL("image/jpeg", 0.85);
+	let canvasUrl = c.toDataURL("image/jpeg", 0.95);
 	console.log(canvasUrl);
 	const createEl = document.createElement('a');
 	createEl.href = canvasUrl;

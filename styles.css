@@ -66,6 +66,15 @@ canvas {
 	margin: 0 auto;
 }
 
+.canvascontainer {
+  
+  display: grid;
+  place-items: center; 
+  /*margin: 0 auto;  */  
+  overflow: auto;
+}
+
+
 button {
   /*background: linear-gradient(45deg, #ff6d1b, #e0417f);*/
   background: #008a27;
