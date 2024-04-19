@@ -69,8 +69,6 @@ function DrawNumbersAlgo1(days) {
 
 function DrawNumbersAlgo2(days) {
 	
-	//initialize array with sublists of ones:
-	//elements = Array.apply(null, Array(days)).map(Number.prototype.valueOf,0);
 	elements = [];
 	
 	//add ones
@@ -91,7 +89,7 @@ function DrawNumbersAlgo2(days) {
 	}
 	
 	//add fours
-	if (days >= 4) {
+	if (days > 4) {
 		
 		if (days < 7) 
 			elements[4].push(3);
@@ -102,10 +100,10 @@ function DrawNumbersAlgo2(days) {
 	}	
 	
 	//add fives
-	if (days >= 8) {
+	if (days > 8) {
 		
 		if (days < 13)
-			elements[7].push(4)
+			elements[8].push(4)
 		else 
 			for (let i=8; i<days; i=i+16) {
 				elements[i].push(5);
@@ -113,10 +111,10 @@ function DrawNumbersAlgo2(days) {
 	}	
 	
 	//add sixes
-	if (days >= 16) {
+	if (days > 16) {
 		
 		if (days < 25)
-			elements[15].push(5)
+			elements[16].push(5)
 		else 
 			for (let i=16; i<days; i=i+32) {
 				elements[i].push(6);
@@ -124,10 +122,10 @@ function DrawNumbersAlgo2(days) {
 	}	
 
 	//add sevens
-	if (days >= 32) {
+	if (days > 32) {
 		
 		if (days < 49)
-			elements[31].push(6)
+			elements[32].push(6)
 		else 
 			for (let i=32; i<days; i=i+64) {
 				elements[i].push(7);
