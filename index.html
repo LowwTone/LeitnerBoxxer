@@ -8,15 +8,18 @@
 <body>
 <h1><span class="titleaccent">Leitnerboxxer</span><br>Custom Leitnerbox schedule generator</h1>
 
-<div class="canvascontainer">
+<div id="canvas-container">
   <canvas id="myCanvas" width="1566" height="340" style="border:1px solid #d3d3d3;">
   Your browser does not support the HTML canvas tag.</canvas>
 </div>
 
-
 <div class="slidecontainer"> 
-  <input type="range" min="5" max="65" value="65" class="slider" id="rangeSlider">
-  <p>Days: <span id="sliderValueDisplay">65</span></p>
+  <input type="range" min="5" max="65" value="65" class="slider" id="daysSlider">
+  <p>Days: <span id="sliderDaysValueDisplay">65</span></p>
+
+  <input type="range" min="3" max="7" value="7" class="slider" id="compartmentsSlider">
+  <p>Max compartments: <span id="sliderCompartmentsValueDisplay">7</span></p>
+  
   <button id="download">Download Schedule as jpg image</button>
 </div>
 

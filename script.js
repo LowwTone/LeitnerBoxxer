@@ -1,4 +1,5 @@
 var days = 65;
+var maxCompartments = 7;
 
 //get reference to canvas context
 var c = document.getElementById("myCanvas");
@@ -16,18 +17,19 @@ DrawLinesVertical(ctx);
 DrawNumbersAlgo2(days);
 
 
-//slider updates and slider value display:
-var slider = document.getElementById("rangeSlider");
-var valueDisplay = document.getElementById("sliderValueDisplay");
+//slider updates and slider value displays:
+var daysSlider = document.getElementById("daysSlider");
+var daysValueDisplay = document.getElementById("sliderDaysValueDisplay");
+var compartmentsSlider = document.getElementById("compartmentsSlider");
+var compartmentsValueDisplay = document.getElementById("sliderCompartmentsValueDisplay");
 
-slider.oninput = function() {
+
+daysSlider.oninput = function() {
 	days = this.value
-	valueDisplay.innerHTML = days;
+	daysValueDisplay.innerHTML = days;
 
 	//refresh canvas:	
 	ctx.clearRect(0, 0, c.width, c.height);
-
-	
 
 	DrawLinesHorizontal(ctx, 8);
 	DrawLinesVertical(ctx);
@@ -35,6 +37,23 @@ slider.oninput = function() {
 	//DrawNumbersAlgo1(days);
 	DrawNumbersAlgo2(days);
 } 
+
+
+compartmentsSlider.oninput = function() {
+	maxCompartments = this.value
+	compartmentsValueDisplay.innerHTML = maxCompartments;
+
+	//refresh canvas:	
+	ctx.clearRect(0, 0, c.width, c.height);
+
+	DrawLinesHorizontal(ctx, 8);
+	DrawLinesVertical(ctx);
+	
+	//DrawNumbersAlgo1(days);
+	DrawNumbersAlgo2(days);
+
+}
+
 
 
 function DrawNumbersAlgo1(days) {
@@ -86,44 +105,65 @@ function DrawNumbersAlgo2(days) {
 	//add fours
 	if (days > 4) {
 		
-		if (days < 7) 
+		if (days < 7) //exception for short schedules to exclude 4s
 			elements[4].push(3);
 		else 
 			for (let i=4; i<days; i=i+8) {
-				elements[i].push(4);
+				if (maxCompartments >= 4) //only add 4s if there are at least 4 compartments
+					elements[i].push(4);
+				else 
+					elements[i].push(parseInt(maxCompartments));
 			}		
 	}	
 	
 	//add fives
 	if (days > 8) {
 		
-		if (days < 13)
-			elements[8].push(4)
+		if (days < 13) //exception for short schedules to exclude 5s
+			if (maxCompartments >= 4) //only add 4s if there are at least 4 compartments
+				elements[8].push(4)
+			else
+				elements[8].push(parseInt(maxCompartments));
 		else 
 			for (let i=8; i<days; i=i+16) {
-				elements[i].push(5);
+				if (maxCompartments >= 5) //only add 5s if there are at least 5 compartments
+					elements[i].push(5);
+				else
+					elements[i].push(parseInt(maxCompartments));
 			}		
 	}	
 	
 	//add sixes
 	if (days > 16) {
 		
-		if (days < 25)
-			elements[16].push(5)
+		if (days < 25) //exception for short schedules to exclude 6s
+			if (maxCompartments >= 5) //only add 5s if there are at least 5 compartments
+				elements[16].push(5)
+			else
+				elements[16].push(parseInt(maxCompartments));
 		else 
 			for (let i=16; i<days; i=i+32) {
-				elements[i].push(6);
+				if (maxCompartments >= 6) //only add 6s if there are at least 6 compartments
+					elements[i].push(6);
+				else
+					elements[i].push(parseInt(maxCompartments));
 			}		
 	}	
 
 	//add sevens
 	if (days > 32) {
 		
-		if (days < 49)
-			elements[32].push(6)
+		if (days < 49) //exception for short schedules to exclude 7s
+			if (maxCompartments >= 6) //only add 6s if there are at least 6 compartments
+				elements[32].push(6)
+			else 
+				elements[32].push(parseInt(maxCompartments));
 		else 
 			for (let i=32; i<days; i=i+64) {
-				elements[i].push(7);
+				if (maxCompartments >= 7) //only add 7s if there are at least 7 compartments
+					elements[i].push(7);
+				else
+					elements[i].push(parseInt(maxCompartments));
 			}		
 	}		
 
