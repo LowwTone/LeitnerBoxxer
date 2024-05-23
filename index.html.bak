@@ -8,7 +8,7 @@
 <body>
 <h1><span class="titleaccent">Leitnerboxxer</span><br>Custom Leitnerbox schedule generator</h1>
 
-<div class="canvascontainer">
+<div id="canvas-container">
   <canvas id="myCanvas" width="1566" height="340" style="border:1px solid #d3d3d3;">
   Your browser does not support the HTML canvas tag.</canvas>
 </div>
